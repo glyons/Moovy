@@ -15,6 +15,10 @@ A desktop application for analyzing movie files, displaying codec information, a
 - **Batch conversion** of multiple incompatible files at once
 - **Windows standalone executable** (no Python installation needed)
 
+## Screenshots
+
+![Moovy Windows Interface](png/Windows.png)
+
 ## System Requirements
 
 - **Operating System**: Windows 7+, macOS 10.13+, or Linux
