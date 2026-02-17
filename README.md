@@ -1,6 +1,6 @@
 # Moovy - Movie Codec Analyzer
 
-A desktop application for analyzing movie files, displaying codec information, and checking Samsung TV compatibility. Built with Python and PyQt6, using FFmpeg for codec detection.
+A desktop application for analyzing movie files, displaying codec information, and checking Samsung TV compatibility. Built with Python and PyQt6, using FFmpeg for codec detection. There also a batch conversion option too.
 
 ## Features
 
@@ -111,18 +111,7 @@ Creates:
 3. Drag `Moovy.app` to Applications folder
 4. Launch from Applications or Spotlight
 
-### Code Signing & Notarization
 
-For App Store distribution or to remove Gatekeeper warnings (optional):
-
-```bash
-chmod +x build_macos_notarized.sh
-./build_macos_notarized.sh
-```
-
-Requires Apple Developer account ($99/year).
-
-See [MACOS_DISTRIBUTION.md](MACOS_DISTRIBUTION.md) for complete macOS build and distribution guide.
 
 ---
 
@@ -233,41 +222,6 @@ python -m src.main
 python3 -m src.main
 ```
 
-## Usage
-
-1. **Scan Folder**: Click "Scan Folder" and select a folder containing video files
-   - The app will recursively scan all subfolders
-   - Found video files will be displayed in the grid
-
-2. **Scan Drive**: Click "Scan Drive" to scan an entire drive
-   - Windows: Choose from available drive letters (C:, D:, E:, etc.)
-   - macOS/Linux: Choose from mount points
-   - Warning dialog will show before scan starts
-   - Can take a while on large drives
-
-3. **Analyze Codecs**: The app automatically analyzes each video file for codec information
-   - Video codec (e.g., H.264, H.265, VP9, etc.)
-   - Audio codec (e.g., AAC, MP3, AC3, etc.)
-
-4. **Check Samsung TV Compatibility**: The compatibility icon shows:
-   - **✓ (Green)**: File is compatible with Samsung TV
-   - **✗ (Red)**: File needs conversion
-
-5. **Convert Files**: 
-   - **Individual**: Right-click on incompatible files to convert
-     - Convert to Samsung TV compatible format (H.264 + AAC in MP4 container)
-     - Choose output file location
-     - Monitor conversion progress
-   - **Batch**: Click "Batch Convert" to convert all incompatible files at once
-     - Select output folder for all conversions
-     - Files are converted sequentially
-     - Progress dialog shows real-time status
-     - All results displayed in summary
-
-6. **View Details**: Right-click on any file to:
-   - View full file details
-   - Open file location in Explorer
-   - See why a file is incompatible (if applicable)
 
 ## Project Structure
 
@@ -325,23 +279,7 @@ Incompatible files are converted to:
 - **Audio Codec**: AAC
 - **Quality**: Medium preset
 
-## Application Icon Design
 
-The Moovy application features a professional, modern icon that represents its core functionality:
-
-**Design Elements:**
-- **Film Reels**: Left and right film reels represent video content and the legacy of cinema
-- **Film Strip**: Vintage film frames between the reels symbolize media analysis
-- **Green Play Button**: Central play button with a checkmark indicates compatibility checking
-- **Checkmark**: Represents the compatibility verification feature
-- **Color Scheme**: Professional blue background with green accent for "compatible" status
-
-The icon is available in multiple formats:
-- **icon.ico** - Windows application icon (multi-size)
-- **icon_256.png** - Large desktop icon (256×256)
-- **icon_128.png** - Medium icon (128×128)
-- **icon_64.png** - Standard icon (64×64)
-- **icon_32.png** - Taskbar icon (32×32)
 
 ## Troubleshooting
 
@@ -416,16 +354,6 @@ The icon is available in multiple formats:
   - Test with a different video file
   - Check that the input file is not corrupted
 
-## Technical Details
-
-### Threading Model
-- **File Scanning**: Runs in separate thread to prevent UI freezing
-- **Codec Analysis**: Runs in separate thread for each movie
-- **File Conversion**: Runs in separate thread with progress updates
-
-### FFmpeg Commands Used
-- **Analysis**: `ffprobe` to extract codec information
-- **Conversion**: `ffmpeg` with libx264 encoder and AAC audio encoder
 
 ## License
 
